@@ -20,6 +20,12 @@ defmodule BlogGraphqlApiWeb.Schema do
       arg(:input, non_null(:user_input_type))
       resolve(&Mutations.UserMutation.register_user/3)
     end
+
+    @desc "Login a user and return a JWT token"
+    field :login_user, type: :session_type do
+      arg(:input, non_null(:session_input_type))
+      resolve(&Mutations.SessionMutation.login_user/3)
+    end
   end
 
   # subscription do

@@ -9,6 +9,7 @@
 http://localhost:4000/api/graphiql
 
 ### Get a list of all users
+```
 {
   users {
     id
@@ -18,8 +19,10 @@ http://localhost:4000/api/graphiql
     role
   }
 }
+```
 
 ### Create a new user
+```
 mutation {
   registerUser(input: {firstName: "Timmy", lastName: "Chan", email: "tchan@test.com", password: "password", passwordConfirmation: "password"})
   {
@@ -30,3 +33,18 @@ mutation {
     role
   }
 }
+```
+
+### Login user
+```
+mutation {
+  loginUser(input: {email: "tchan@test.com", password: "password"}) {
+    token
+    user{
+      id
+      firstName
+      lastName
+    }
+  }
+}
+```

@@ -4,4 +4,5 @@ defmodule BlogGraphqlApiWeb.Schema.Types do
   alias BlogGraphqlApiWeb.Schema.Types 
 
   import_types(Types.UserType)
+  import_types(Types.SessionType)
 end

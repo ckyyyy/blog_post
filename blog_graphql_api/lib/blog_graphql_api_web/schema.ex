@@ -3,6 +3,7 @@ defmodule BlogGraphqlApiWeb.Schema do
 
   alias BlogGraphqlApiWeb.Resolvers
   alias BlogGraphqlApiWeb.Mutations
+  alias BlogGraphqlApiWeb.Schema.Middleware
 
   # import Types 
   import_types(BlogGraphqlApiWeb.Schema.Types)
@@ -10,6 +11,7 @@ defmodule BlogGraphqlApiWeb.Schema do
   query do
     @desc "Get a list of all users"
     field :users, list_of(:user_type) do
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.UserResolver.users/3)
     end
   end

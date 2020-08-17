@@ -1,3 +1,15 @@
+### Create contexts, models and tables
+`mix phx.gen.context {context_name} {model_name} {table_name} {row}`  
+
+1. Create user model and table  
+```
+mix phx.gen.context Account User users first_name last_name email password_hash role
+```
+2. Changed code and migrate to database  
+```
+mix ecto.migrate
+```
+
 ### Insert User into database via iex
 1. `iex -S mix`  
 2. `alias BlogPost.Account.User`  

@@ -9,6 +9,10 @@ mix phx.gen.context Account User users first_name last_name email password_hash 
 ```
 mix ecto.migrate
 ```
+3. Create post model and table  
+```
+mix phx.gen.context Blog Post posts title content:text published:boolean user_id:references:users
+```
 
 ### Insert User into database via iex
 1. `iex -S mix`  
@@ -53,6 +57,22 @@ mutation {
   loginUser(input: {email: "tchan@test.com", password: "password"}) {
     token
     user{
+      id
+      firstName
+      lastName
+    }
+  }
+}
+```
+
+### Create Post
+```
+mutation {
+  createPost(input: {title: "hello world", content: "testing post", published: true}){
+    id
+    title
+    content
+    user {
       id
       firstName
       lastName

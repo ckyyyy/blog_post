@@ -28,6 +28,13 @@ defmodule BlogGraphqlApiWeb.Schema do
       arg(:input, non_null(:session_input_type))
       resolve(&Mutations.SessionMutation.login_user/3)
     end
+
+    @desc "Create a post"
+    field :add_post, type: :post_type do
+      arg(:input, non_null(:post_input_type))
+      middleware(Middleware.Authorize, :any)
+      resolve(&Mutations.PostMutation.create_post/3)
+    end
   end
 
   # subscription do

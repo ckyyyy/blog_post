@@ -1,5 +1,4 @@
 defmodule BlogGraphqlApi.Guardian do
-
   use Guardian, otp_app: :blog_graphql_api
   alias BlogGraphqlApi.Account
 

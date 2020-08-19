@@ -7,7 +7,11 @@ defmodule BlogGraphqlApi.BlogTest do
     alias BlogGraphqlApi.Blog.Post
 
     @valid_attrs %{content: "some content", published: true, title: "some title"}
-    @update_attrs %{content: "some updated content", published: false, title: "some updated title"}
+    @update_attrs %{
+      content: "some updated content",
+      published: false,
+      title: "some updated title"
+    }
     @invalid_attrs %{content: nil, published: nil, title: nil}
 
     def post_fixture(attrs \\ %{}) do

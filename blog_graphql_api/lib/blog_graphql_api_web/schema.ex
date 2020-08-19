@@ -46,5 +46,4 @@ defmodule BlogGraphqlApiWeb.Schema do
 
   # subscription do
   # end
-
 end

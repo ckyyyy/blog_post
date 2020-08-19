@@ -1,10 +1,10 @@
 defmodule BlogGraphqlApi.Account.Session do
-
   alias BlogGraphqlApi.Repo
   alias BlogGraphqlApi.Account.User
 
   def authenticate(args) do
     user = Repo.get_by(User, email: String.downcase(args.email))
+
     case check_password(user, args) do
       true -> {:ok, user}
       _ -> {:error, "Incorrect login credentials"}
@@ -12,7 +12,7 @@ defmodule BlogGraphqlApi.Account.Session do
   end
 
   defp check_password(user, args) do
-    case user do 
+    case user do
       nil -> Comeonin.Argon2.dummy_checkpw()
       _ -> Comeonin.Argon2.checkpw(args.password, user.password_hash)
     end

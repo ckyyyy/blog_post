@@ -13,6 +13,10 @@ mix ecto.migrate
 ```
 mix phx.gen.context Blog Post posts title content:text published:boolean user_id:references:users
 ```
+4. Create comment model and table
+```
+mix phx.gen.context Blog Comment comments content:text user_id:references:user post_id:references:post
+```
 
 ### Insert User into database via iex
 1. `iex -S mix`  
@@ -72,6 +76,24 @@ mutation {
     id
     title
     content
+    user {
+      id
+      firstName
+      lastName
+    }
+  }
+}
+```
+
+### Create Comment
+```
+mutation {
+  createComment(input: {content: "testing comment", post_id: 1}){
+    id
+    content
+    post{
+      title
+    }
     user {
       id
       firstName

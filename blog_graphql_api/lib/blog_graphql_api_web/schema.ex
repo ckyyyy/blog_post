@@ -30,10 +30,17 @@ defmodule BlogGraphqlApiWeb.Schema do
     end
 
     @desc "Create a post"
-    field :add_post, type: :post_type do
+    field :create_post, type: :post_type do
       arg(:input, non_null(:post_input_type))
       middleware(Middleware.Authorize, :any)
       resolve(&Mutations.PostMutation.create_post/3)
+    end
+
+    @desc "Create a comment"
+    field :create_comment, type: :comment_type do
+      arg(:input, non_null(:comment_input_type))
+      middleware(Middleware.Authorize, :any)
+      resolve(&Mutations.CommentMutation.create_comment/3)
     end
   end
 
